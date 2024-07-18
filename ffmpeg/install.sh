@@ -1,5 +1,5 @@
 #!/bin/bash
-# Get necessary packages
+
 sudo apt-get update -qq
 sudo apt-get -y install \
     autoconf \
@@ -28,8 +28,8 @@ sudo apt-get -y install \
     libx264-dev \
     zlib1g-dev
 
-# Prepare folders
-mkdir -p ./build ./bin
+./configure   --prefix=/usr/local   --enable-gpl   --enable-libass   --enable-libfdk-aac   --enable-libfreetype   --enable-libmp3lame   --enable-libopus   --enable-libtheora   --enable-libvorbis   --enable-libvpx   --enable-libx264   --enable-libx265   --enable-nonfree   --enable-libxml2 --extra-libs="-lpthread -lm" --ld="g++" --enable-gpl --enable-gnutls --enable-libaom --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libharfbuzz
 
-# Build FFmpeg
-./compile.sh
+make -j8
+make install
+hash -r
